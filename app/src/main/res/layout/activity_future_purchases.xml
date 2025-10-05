@@ -1,0 +1,35 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_future_purchases"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- دکمه ثبت مورد جدید -->
+        <Button
+            android:id="@+id/btn_add_new_future_purchase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ثبت مورد جدید"
+            android:background="@android:color/transparent"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- باکس شفاف لیست خریدهای آتی -->
+        <LinearLayout
+            android:id="@+id/container_future_purchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#88000000"
+            android:padding="16dp"/>
+
+    </LinearLayout>
+</ScrollView>
