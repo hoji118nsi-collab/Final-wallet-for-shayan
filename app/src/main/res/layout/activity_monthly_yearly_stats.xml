@@ -1,0 +1,86 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_monthly_yearly_stats"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- باکس شفاف نمودارها -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#88000000"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <!-- عنوان صفحه -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="آمار ماهانه و سالانه"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:paddingBottom="12dp"/>
+
+            <!-- نمودار ماهانه -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="آمار ماهانه"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:paddingBottom="8dp"/>
+            <FrameLayout
+                android:id="@+id/monthly_chart_container"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/tv_empty_monthly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="هیچ خریدی ثبت نشده است."
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:paddingBottom="16dp"/>
+
+            <!-- نمودار سالانه -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="آمار سالانه"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:paddingBottom="8dp"/>
+            <FrameLayout
+                android:id="@+id/yearly_chart_container"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/tv_empty_yearly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="هیچ خریدی ثبت نشده است."
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:paddingBottom="16dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
