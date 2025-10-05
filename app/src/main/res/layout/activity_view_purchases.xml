@@ -1,0 +1,143 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@drawable/background_view_purchases">
+
+    <!-- فاصله بالا -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <!-- باکس شفاف برای انتخاب بازه و دکمه‌ها -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#88000000"  <!-- مشکی نیمه شفاف -->
+        android:padding="16dp"
+        android:layout_margin="8dp"
+        android:clipToPadding="false"
+        android:elevation="4dp"
+        android:layout_gravity="center"
+        android:spacing="12dp"
+        android:backgroundTintMode="src_over"
+        android:clipChildren="false"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:radius="16dp"> <!-- گوشه‌های گرد -->
+
+        <!-- دکمه انتخاب بازه تاریخ -->
+        <Button
+            android:id="@+id/btn_select_date_range"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="انتخاب بازه"
+            android:background="@android:color/transparent"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- ردیف تاریخ از و تا -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <!-- تاریخ از -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="از:"
+                    android:textColor="#FFFFFF"
+                    android:paddingEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/tv_date_from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--/--/----"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <!-- فاصله بین دو تاریخ -->
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="wrap_content" />
+
+            <!-- تاریخ تا -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تا:"
+                    android:textColor="#FFFFFF"
+                    android:paddingEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/tv_date_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--/--/----"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ردیف دکمه‌ها -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_view_purchases"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="مشاهده"
+                android:background="@android:color/transparent"
+                android:textColor="#FFFFFF"
+                android:padding="12dp"
+                android:enabled="false"
+                android:alpha="0.5" />
+
+            <Button
+                android:id="@+id/btn_cancel_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="انصراف"
+                android:background="@android:color/transparent"
+                android:textColor="#FFFFFF"
+                android:padding="12dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- فاصله پایین -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+</LinearLayout>

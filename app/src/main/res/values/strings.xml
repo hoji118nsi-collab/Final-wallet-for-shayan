@@ -1,0 +1,43 @@
+<resources>
+    <!-- عنوان برنامه -->
+    <string name="app_name">کیف پول شایان</string>
+
+    <!-- دکمه‌های صفحه اصلی -->
+    <string name="wallet_balance">موجودی کیف پول</string>
+    <string name="investment_balance">موجودی صندوق</string>
+    <string name="operation">عملیات</string>
+
+    <!-- گزینه‌های صفحه عملیات -->
+    <string name="add_money">ثبت ورود پول</string>
+    <string name="new_purchase">ثبت خرید جدید</string>
+    <string name="view_completed_purchases">مشاهده خریدهای انجام شده</string>
+    <string name="transfer_investment">انتقال به صندوق سرمایه گذاری</string>
+    <string name="future_purchases">لیست خریدهای آتی</string>
+    <string name="monthly_yearly_stats">مشاهده آمار ماهانه و سالانه</string>
+
+    <!-- آرایه عنوان‌های ثبت ورود پول -->
+    <string-array name="title_options">
+        <item>پول توجیبی</item>
+        <item>کادو</item>
+        <item>جایزه</item>
+    </string-array>
+
+    <!-- آرایه عنوان‌های ثبت خرید جدید -->
+    <string-array name="purchase_title_options">
+        <item>غذا و خوراکی</item>
+        <item>مطالعه و ارتقای فردی</item>
+        <item>تفریح و سرگرمی</item>
+        <item>خرید هیجانی</item>
+        <item>کمک به هم نوع</item>
+    </string-array>
+
+    <!-- دکمه‌ها -->
+    <string name="confirm">تایید</string>
+    <string name="cancel">انصراف</string>
+    <string name="thanks_message">خدایا شکرت بابت روزی امروز</string>
+    <string name="select_date">تاریخ خرید</string>
+
+    <!-- پیام‌ها -->
+    <string name="success_message">با موفقیت ثبت شد</string>
+    <string name="currency">تومان</string>
+</resources>

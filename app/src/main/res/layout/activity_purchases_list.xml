@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_view_purchases">
+
+    <!-- باکس شفاف کلی -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#AA000000" <!-- شفافیت برای خوانایی -->
+        android:padding="16dp">
+
+        <!-- عنوان صفحه -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="خریدهای انجام شده"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="12dp"/>
+
+        <!-- ScrollView برای لیست طولانی -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/ll_purchases_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <!-- دکمه بازگشت -->
+        <Button
+            android:id="@+id/btn_back_from_purchases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="بازگشت"
+            android:background="@android:color/transparent"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
