@@ -3,7 +3,6 @@ package com.example.wallet
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
@@ -21,70 +20,83 @@ class PurchasesListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ساخت ScrollView با LinearLayout داخلی
-        val scrollView = ScrollView(this)
         containerLayout = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(24, 24, 24, 24)
-            setBackgroundColor(Color.parseColor("#88000000")) // باکس شفاف مشکی
+            setBackgroundColor(Color.parseColor("#88000000"))
         }
+
+        val scrollView = ScrollView(this)
         scrollView.addView(containerLayout)
         setContentView(scrollView)
 
-        // دریافت بازه تاریخ از Intent
-        val fromMillis = intent.getLongExtra("fromDate", 0L)
-        val toMillis = intent.getLongExtra("toDate", 0L)
-        val fromDate = Calendar.getInstance().apply { timeInMillis = fromMillis }
-        val toDate = Calendar.getInstance().apply { timeInMillis = toMillis }
+        displayPurchases()
+    }
 
-        // بارگذاری لیست خریدها از SharedPreferences
+    private fun displayPurchases() {
         val sharedPref = getSharedPreferences("wallet_prefs", Context.MODE_PRIVATE)
+
+        // خواندن خریدهای انجام شده
         val purchasesJson = sharedPref.getString("purchases_list", "[]")
         val purchasesArray = JSONArray(purchasesJson)
 
-        // گروه‌بندی خریدها بر اساس عنوان (دسته‌بندی)
+        // دریافت بازه تاریخ از Intent، اگر موجود نباشد همه را نمایش بده
+        val fromMillis = intent.getLongExtra("fromDate", Long.MIN_VALUE)
+        val toMillis = intent.getLongExtra("toDate", Long.MAX_VALUE)
+        val fromDate = Calendar.getInstance().apply { timeInMillis = fromMillis }
+        val toDate = Calendar.getInstance().apply { timeInMillis = toMillis }
+
         val categories = mutableMapOf<String, MutableList<JSONObject>>()
         for (i in 0 until purchasesArray.length()) {
             val purchase = purchasesArray.getJSONObject(i)
-            val date = dateFormat.parse(purchase.getString("date"))
+            val dateStr = purchase.optString("date", "")
+            val date = try { dateFormat.parse(dateStr) } catch (e: Exception) { null }
+
             if (date != null && date.time in fromDate.timeInMillis..toDate.timeInMillis) {
-                val category = purchase.getString("title")
+                val category = purchase.optString("title", "نامشخص")
                 categories.getOrPut(category) { mutableListOf() }.add(purchase)
             }
         }
 
-        // نمایش هر دسته‌بندی و خریدهای مربوطه
-        for ((category, purchases) in categories) {
-            val categoryText = TextView(this).apply {
-                text = category
-                textSize = 18f
-                setTextColor(Color.WHITE)
-                setPadding(0, 16, 0, 8)
-            }
-            containerLayout.addView(categoryText)
-
-            for (purchase in purchases) {
-                val purchaseText = TextView(this).apply {
-                    val amount = purchase.getInt("amount")
-                    val dateStr = purchase.getString("date")
-                    text = "مبلغ: $amount تومان - تاریخ: $dateStr"
-                    textSize = 16f
-                    setTextColor(Color.WHITE)
-                    setPadding(16, 4, 0, 4)
-                }
-                containerLayout.addView(purchaseText)
-            }
-        }
-
-        // اگر هیچ خریدی پیدا نشد
         if (categories.isEmpty()) {
-            val emptyText = TextView(this).apply {
-                text = "هیچ خریدی در بازه انتخاب شده ثبت نشده است."
-                textSize = 16f
-                setTextColor(Color.WHITE)
-                setPadding(0, 16, 0, 16)
+            addEmptyMessage("هیچ خریدی در بازه انتخاب شده ثبت نشده است.")
+        } else {
+            categories.forEach { (category, purchases) ->
+                addCategoryHeader(category)
+                purchases.forEach { addPurchaseItem(it) }
             }
-            containerLayout.addView(emptyText)
         }
+    }
+
+    private fun addCategoryHeader(title: String) {
+        val textView = TextView(this).apply {
+            text = title
+            textSize = 18f
+            setTextColor(Color.WHITE)
+            setPadding(0, 16, 0, 8)
+        }
+        containerLayout.addView(textView)
+    }
+
+    private fun addPurchaseItem(purchase: JSONObject) {
+        val amount = purchase.optInt("amount", 0)
+        val date = purchase.optString("date", "--/--/----")
+        val textView = TextView(this).apply {
+            text = "مبلغ: $amount تومان - تاریخ: $date"
+            textSize = 16f
+            setTextColor(Color.WHITE)
+            setPadding(16, 4, 0, 4)
+        }
+        containerLayout.addView(textView)
+    }
+
+    private fun addEmptyMessage(message: String) {
+        val textView = TextView(this).apply {
+            text = message
+            textSize = 16f
+            setTextColor(Color.WHITE)
+            setPadding(0, 16, 0, 16)
+        }
+        containerLayout.addView(textView)
     }
 }

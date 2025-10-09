@@ -4,11 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONArray
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddFuturePurchaseActivity : AppCompatActivity() {
 
@@ -16,6 +17,8 @@ class AddFuturePurchaseActivity : AppCompatActivity() {
     private lateinit var editAmount: EditText
     private lateinit var btnAdd: Button
     private lateinit var btnCancel: Button
+
+    private val dateFormat = SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.getDefault())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,15 +29,12 @@ class AddFuturePurchaseActivity : AppCompatActivity() {
         btnAdd = findViewById(R.id.btn_add_purchase)
         btnCancel = findViewById(R.id.btn_cancel_purchase)
 
-        btnAdd.isEnabled = false
-        btnAdd.alpha = 0.5f
+        // غیرفعال کردن دکمه در ابتدا
+        updateButtonState()
 
         val textWatcher = object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                val titleFilled = editTitle.text.toString().trim().isNotEmpty()
-                val amountFilled = editAmount.text.toString().trim().isNotEmpty()
-                btnAdd.isEnabled = titleFilled && amountFilled
-                btnAdd.alpha = if (btnAdd.isEnabled) 1f else 0.5f
+                updateButtonState()
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -44,24 +44,42 @@ class AddFuturePurchaseActivity : AppCompatActivity() {
         editAmount.addTextChangedListener(textWatcher)
 
         btnCancel.setOnClickListener {
-            finish() // بازگشت به صفحه قبل
+            finish()
         }
 
         btnAdd.setOnClickListener {
-            val title = editTitle.text.toString().trim()
-            val amount = editAmount.text.toString().trim().toIntOrNull() ?: 0
-
-            val sharedPref = getSharedPreferences("wallet_prefs", Context.MODE_PRIVATE)
-            val purchasesJson = sharedPref.getString("future_purchases_list", "[]")
-            val purchasesArray = JSONArray(purchasesJson)
-
-            val newPurchase = JSONObject()
-            newPurchase.put("title", title)
-            newPurchase.put("amount", amount)
-            purchasesArray.put(newPurchase)
-
-            sharedPref.edit().putString("future_purchases_list", purchasesArray.toString()).apply()
-            finish() // بازگشت به صفحه لیست خریدهای آتی
+            addFuturePurchase()
         }
+    }
+
+    private fun updateButtonState() {
+        val titleFilled = editTitle.text.toString().trim().isNotEmpty()
+        val amountFilled = editAmount.text.toString().trim().isNotEmpty()
+        btnAdd.isEnabled = titleFilled && amountFilled
+        btnAdd.alpha = if (btnAdd.isEnabled) 1f else 0.5f
+    }
+
+    private fun addFuturePurchase() {
+        val title = editTitle.text.toString().trim()
+        val amount = editAmount.text.toString().trim().toIntOrNull()
+        if (amount == null || amount <= 0) {
+            Toast.makeText(this, "لطفا مبلغ معتبر وارد کنید", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val sharedPref = getSharedPreferences("wallet_prefs", Context.MODE_PRIVATE)
+        val purchasesJson = sharedPref.getString("future_purchases_list", "[]")
+        val purchasesArray = JSONArray(purchasesJson)
+
+        val newPurchase = JSONObject()
+        newPurchase.put("title", title)
+        newPurchase.put("amount", amount)
+        newPurchase.put("date", dateFormat.format(Date())) // اضافه کردن تاریخ ثبت
+
+        purchasesArray.put(newPurchase)
+        sharedPref.edit().putString("future_purchases_list", purchasesArray.toString()).apply()
+
+        Toast.makeText(this, "ثبت شد!", Toast.LENGTH_SHORT).show()
+        finish()
     }
 }
