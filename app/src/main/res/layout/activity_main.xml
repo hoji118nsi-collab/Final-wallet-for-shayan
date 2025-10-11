@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10%" />
 
-    <!-- باکس نمایش موجودی کیف پول (غیرقابل کلیک) -->
+    <!-- باکس نمایش موجودی کیف پول -->
     <TextView
         android:id="@+id/txt_wallet_balance"
         android:layout_width="wrap_content"
@@ -36,8 +36,23 @@
         android:textColor="#FFFFFF"
         android:background="@drawable/button_background"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/operation_button"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:clickable="false"
+        android:focusable="false"/>
+
+    <!-- باکس نمایش موجودی صندوق -->
+    <TextView
+        android:id="@+id/txt_investment_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 تومان"
+        android:padding="12dp"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_background"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txt_wallet_balance"
+        android:layout_marginTop="16dp"
         android:clickable="false"
         android:focusable="false"/>
 
@@ -48,31 +63,11 @@
         android:layout_height="wrap_content"
         android:text="عملیات"
         android:layout_centerHorizontal="true"
-        android:layout_above="@id/balance_buttons"
+        android:layout_below="@id/txt_investment_balance"
+        android:layout_marginTop="24dp"
         android:background="@drawable/button_background"
         android:textColor="#FFFFFF"
         android:padding="12dp"
         android:elevation="8dp"/>
-
-    <!-- دو دکمه موجودی صندوق و کیف پول کنار هم -->
-    <LinearLayout
-        android:id="@+id/balance_buttons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp">
-
-        <Button
-            android:id="@+id/investment_balance_button"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="موجودی صندوق"
-            android:background="@drawable/button_background"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            android:elevation="8dp"/>
-    </LinearLayout>
 
 </RelativeLayout>
