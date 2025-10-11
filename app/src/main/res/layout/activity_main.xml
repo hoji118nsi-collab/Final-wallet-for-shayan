@@ -36,7 +36,8 @@
         android:textColor="#FFFFFF"
         android:background="@drawable/button_background"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/title_text"
+        android:layout_marginTop="30dp"
         android:clickable="false"
         android:focusable="false"/>
 
