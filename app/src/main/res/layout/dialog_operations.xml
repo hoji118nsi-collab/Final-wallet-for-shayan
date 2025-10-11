@@ -6,19 +6,21 @@
     android:background="@android:color/transparent"
     android:clipToPadding="false">
 
-    <!-- پس‌زمینه گرد و نیمه‌شفاف -->
+    <!-- پس‌زمینه گرد و نیمه‌شفاف دیالوگ -->
     <LinearLayout
-        android:layout_width="320dp"
-        android:layout_height="320dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:background="@drawable/dialog_rounded_background"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="16dp">
 
+        <!-- Container برای دکمه‌های دایره‌ای -->
         <FrameLayout
             android:id="@+id/circle_buttons_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
             android:layout_gravity="center">
 
             <!-- دکمه‌ها -->
@@ -26,7 +28,7 @@
                 android:id="@+id/btn_add_money"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/button_circle_background"
+                android:background="@drawable/button_circle_background_purple"
                 android:text="💰"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
@@ -36,7 +38,7 @@
                 android:id="@+id/btn_new_purchase"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/button_circle_background"
+                android:background="@drawable/button_circle_background_purple"
                 android:text="🛒"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
@@ -46,7 +48,7 @@
                 android:id="@+id/btn_view_completed_purchases"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/button_circle_background"
+                android:background="@drawable/button_circle_background_purple"
                 android:text="📋"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
@@ -56,7 +58,7 @@
                 android:id="@+id/btn_transfer_investment"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/button_circle_background"
+                android:background="@drawable/button_circle_background_purple"
                 android:text="🏦"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
@@ -66,7 +68,7 @@
                 android:id="@+id/btn_future_purchases"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/button_circle_background"
+                android:background="@drawable/button_circle_background_purple"
                 android:text="📅"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
@@ -76,7 +78,7 @@
                 android:id="@+id/btn_monthly_yearly_stats"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:background="@drawable/button_circle_background"
+                android:background="@drawable/button_circle_background_purple"
                 android:text="📊"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
@@ -136,6 +138,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="11sp"
                 android:layout_gravity="center" />
+
         </FrameLayout>
     </LinearLayout>
 </FrameLayout>

@@ -3,7 +3,7 @@
     android:color="?attr/colorControlHighlight">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#AAFFFFFF"/> <!-- سفید نیمه شفاف -->
+            <solid android:color="#6A1B9A"/> <!-- بنفش پررنگ -->
             <corners android:radius="12dp"/> <!-- گوشه‌های گرد -->
         </shape>
     </item>
