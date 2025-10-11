@@ -3,6 +3,7 @@ package com.example.wallet
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.ViewTreeObserver
@@ -10,6 +11,7 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.cos
+import kotlin.math.min
 import kotlin.math.sin
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         txtWalletBalance = findViewById(R.id.txt_wallet_balance)
         txtInvestmentBalance = findViewById(R.id.txt_investment_balance)
 
-        // بارگذاری موجودی اولیه
+        // بارگذاری موجودی‌ها
         loadBalances()
 
         val operationButton: Button = findViewById(R.id.operation_button)
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // بروزرسانی موجودی‌ها وقتی برگشت به صفحه اصلی
+        // بروزرسانی موجودی‌ها در بازگشت به صفحه اصلی
         loadBalances()
     }
 
@@ -43,15 +45,15 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("wallet_prefs", Context.MODE_PRIVATE)
         val walletBalance = sharedPref.getInt("wallet_balance", 0)
         val investmentBalance = sharedPref.getInt("investment_balance", 0)
-        txtWalletBalance.text = "$walletBalance تومان"
-        txtInvestmentBalance.text = "$investmentBalance تومان" // واحد تومان اضافه شد
+
+        txtWalletBalance.text = "موجودی کیف پول: $walletBalance تومان"
+        txtInvestmentBalance.text = "موجودی صندوق: $investmentBalance تومان"
     }
 
     private fun showOperationsDialog() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_operations)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
-
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCancelable(true)
         dialog.setCanceledOnTouchOutside(true)
 
@@ -75,6 +77,7 @@ class MainActivity : AppCompatActivity() {
 
         val container = dialog.findViewById<FrameLayout>(R.id.circle_buttons_container)
 
+        // محاسبه موقعیت دکمه‌ها پس از ترسیم
         container.viewTreeObserver.addOnGlobalLayoutListener(object :
             ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -82,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
                 val centerX = container.width / 2f
                 val centerY = container.height / 2f
-                val radius = (minOf(centerX, centerY) * 0.7).toFloat()
+                val radius = (min(centerX, centerY) * 0.7).toFloat()
 
                 buttons.forEachIndexed { index, button ->
                     val angle = Math.toRadians((index * 360.0 / buttons.size) - 90)
@@ -93,10 +96,11 @@ class MainActivity : AppCompatActivity() {
 
                     val label = labels[index]
                     label.x = x + button.width / 2 - label.width / 2
-                    label.y = y + button.height + 4
+                    label.y = y + button.height + 8
 
+                    // افکت ورود
                     val anim = AnimationUtils.loadAnimation(this@MainActivity, R.anim.button_fade_slide)
-                    anim.startOffset = (index * 100).toLong()
+                    anim.startOffset = (index * 100L)
                     button.startAnimation(anim)
                     label.startAnimation(anim)
                 }
@@ -114,17 +118,26 @@ class MainActivity : AppCompatActivity() {
             dialog.dismiss()
         }
 
-        // بقیه دکمه‌ها فعلاً فقط Toast
-        buttons[2].setOnClickListener { showToastAndDismiss(dialog, "مشاهده خریدهای انجام شده انتخاب شد") }
-        buttons[3].setOnClickListener { showToastAndDismiss(dialog, "انتقال به صندوق سرمایه گذاری انتخاب شد") }
-        buttons[4].setOnClickListener { showToastAndDismiss(dialog, "لیست خریدهای آتی انتخاب شد") }
-        buttons[5].setOnClickListener { showToastAndDismiss(dialog, "مشاهده آمار ماهانه و سالانه انتخاب شد") }
+        buttons[2].setOnClickListener {
+            startActivity(Intent(this, ViewPurchasesActivity::class.java))
+            dialog.dismiss()
+        }
+
+        buttons[3].setOnClickListener {
+            startActivity(Intent(this, TransferInvestmentActivity::class.java))
+            dialog.dismiss()
+        }
+
+        buttons[4].setOnClickListener {
+            startActivity(Intent(this, FuturePurchasesActivity::class.java))
+            dialog.dismiss()
+        }
+
+        buttons[5].setOnClickListener {
+            startActivity(Intent(this, MonthlyYearlyStatsActivity::class.java))
+            dialog.dismiss()
+        }
 
         dialog.show()
-    }
-
-    private fun showToastAndDismiss(dialog: Dialog, message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-        dialog.dismiss()
     }
 }

@@ -2,140 +2,140 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="20dp"
+    android:padding="24dp"
+    android:background="@android:color/transparent"
     android:clipToPadding="false">
 
-    <!-- بک‌گراند کامل -->
-    <ImageView
-        android:id="@+id/operation_bg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/operation_background"
-        android:scaleType="fitXY"
-        android:contentDescription="Operation Background" />
+    <!-- پس‌زمینه گرد و نیمه‌شفاف -->
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background="@drawable/dialog_rounded_background"
+        android:gravity="center">
 
-    <!-- Container دایره‌ای -->
-    <FrameLayout
-        android:id="@+id/circle_buttons_container"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center">
+        <FrameLayout
+            android:id="@+id/circle_buttons_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
 
-        <!-- دکمه‌ها -->
-        <Button
-            android:id="@+id/btn_add_money"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/button_circle_background"
-            android:text="💰"
-            android:textSize="12sp"
-            android:textColor="#FFFFFF"
-            android:elevation="6dp"/>
+            <!-- دکمه‌ها -->
+            <Button
+                android:id="@+id/btn_add_money"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/button_circle_background"
+                android:text="💰"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:elevation="6dp" />
 
-        <Button
-            android:id="@+id/btn_new_purchase"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/button_circle_background"
-            android:text="🛒"
-            android:textSize="12sp"
-            android:textColor="#FFFFFF"
-            android:elevation="6dp"/>
+            <Button
+                android:id="@+id/btn_new_purchase"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/button_circle_background"
+                android:text="🛒"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:elevation="6dp" />
 
-        <Button
-            android:id="@+id/btn_view_completed_purchases"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/button_circle_background"
-            android:text="📋"
-            android:textSize="12sp"
-            android:textColor="#FFFFFF"
-            android:elevation="6dp"/>
+            <Button
+                android:id="@+id/btn_view_completed_purchases"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/button_circle_background"
+                android:text="📋"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:elevation="6dp" />
 
-        <Button
-            android:id="@+id/btn_transfer_investment"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/button_circle_background"
-            android:text="🏦"
-            android:textSize="12sp"
-            android:textColor="#FFFFFF"
-            android:elevation="6dp"/>
+            <Button
+                android:id="@+id/btn_transfer_investment"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/button_circle_background"
+                android:text="🏦"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:elevation="6dp" />
 
-        <Button
-            android:id="@+id/btn_future_purchases"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/button_circle_background"
-            android:text="📅"
-            android:textSize="12sp"
-            android:textColor="#FFFFFF"
-            android:elevation="6dp"/>
+            <Button
+                android:id="@+id/btn_future_purchases"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/button_circle_background"
+                android:text="📅"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:elevation="6dp" />
 
-        <Button
-            android:id="@+id/btn_monthly_yearly_stats"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/button_circle_background"
-            android:text="📊"
-            android:textSize="12sp"
-            android:textColor="#FFFFFF"
-            android:elevation="6dp"/>
+            <Button
+                android:id="@+id/btn_monthly_yearly_stats"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/button_circle_background"
+                android:text="📊"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:elevation="6dp" />
 
-        <!-- لیبل‌ها -->
-        <TextView
-            android:id="@+id/label_add_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ثبت ورود پول"
-            android:textColor="#FFFFFF"
-            android:textSize="10sp"
-            android:layout_gravity="center"/>
+            <!-- لیبل‌ها -->
+            <TextView
+                android:id="@+id/label_add_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ورود پول"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/label_new_purchase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ثبت خرید جدید"
-            android:textColor="#FFFFFF"
-            android:textSize="10sp"
-            android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/label_new_purchase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="خرید جدید"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/label_completed_purchases"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="خریدهای انجام شده"
-            android:textColor="#FFFFFF"
-            android:textSize="10sp"
-            android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/label_completed_purchases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="خریدهای انجام‌شده"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/label_transfer_investment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="انتقال به صندوق"
-            android:textColor="#FFFFFF"
-            android:textSize="10sp"
-            android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/label_transfer_investment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="انتقال به صندوق"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/label_future_purchases"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="لیست خریدهای آتی"
-            android:textColor="#FFFFFF"
-            android:textSize="10sp"
-            android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/label_future_purchases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="خریدهای آتی"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/label_monthly_yearly_stats"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="آمار ماهانه و سالانه"
-            android:textColor="#FFFFFF"
-            android:textSize="10sp"
-            android:layout_gravity="center"/>
-
-    </FrameLayout>
+            <TextView
+                android:id="@+id/label_monthly_yearly_stats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="آمار ماهانه/سالانه"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:layout_gravity="center" />
+        </FrameLayout>
+    </LinearLayout>
 </FrameLayout>
