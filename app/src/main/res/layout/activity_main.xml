@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#121212">
 
     <!-- بک‌گراند کل صفحه -->
     <ImageView
@@ -11,7 +12,12 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/background_main"
-        android:contentDescription="background" />
+        android:contentDescription="background"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:z="-1" />
 
     <!-- عنوان برنامه -->
     <TextView
@@ -34,12 +40,10 @@
         android:padding="12dp"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/button_background"
+        android:background="#4CAF50"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/title_text"
-        android:layout_marginTop="30dp"
-        android:clickable="false"
-        android:focusable="false"/>
+        android:layout_marginTop="30dp" />
 
     <!-- باکس نمایش موجودی صندوق -->
     <TextView
@@ -50,25 +54,26 @@
         android:padding="12dp"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/button_background"
+        android:background="#2196F3"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/txt_wallet_balance"
-        android:layout_marginTop="16dp"
-        android:clickable="false"
-        android:focusable="false"/>
+        android:layout_marginTop="16dp" />
 
     <!-- دکمه عملیات -->
     <Button
         android:id="@+id/operation_button"
-        android:layout_width="200dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="عملیات"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/txt_investment_balance"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/button_background"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="#9C27B0"
         android:textColor="#FFFFFF"
+        android:textSize="18sp"
         android:padding="12dp"
-        android:elevation="8dp"/>
+        android:elevation="10dp"
+        android:visibility="visible" />
 
 </RelativeLayout>

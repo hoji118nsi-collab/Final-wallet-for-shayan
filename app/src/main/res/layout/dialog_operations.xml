@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="24dp"
-    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#AA000000"  <!-- نیمه شفاف برای تار شدن پس‌زمینه -->
     android:clipToPadding="false">
 
     <!-- پس‌زمینه گرد و نیمه‌شفاف دیالوگ -->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:background="@drawable/dialog_rounded_background"
@@ -19,8 +18,8 @@
         <!-- Container برای دکمه‌های دایره‌ای -->
         <FrameLayout
             android:id="@+id/circle_buttons_container"
-            android:layout_width="320dp"
-            android:layout_height="320dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center">
 
             <!-- دکمه‌ها -->
