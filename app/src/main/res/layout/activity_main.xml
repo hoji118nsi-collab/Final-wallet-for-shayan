@@ -1,79 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/root_layout"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#121212">
+    android:layout_height="match_parent">
 
-    <!-- بک‌گراند کل صفحه -->
+    <!-- تصویر بک‌گراند -->
     <ImageView
         android:id="@+id/background_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         android:src="@drawable/background_main"
-        android:contentDescription="background"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:z="-1" />
+        android:scaleType="centerCrop"
+        android:contentDescription="background" />
 
-    <!-- عنوان برنامه -->
-    <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="کیف پول شایان"
-        android:textSize="28sp"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10%" />
+    <!-- لایه‌ی محتوای اصلی -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="32dp"
+        android:background="@android:color/transparent">
 
-    <!-- باکس نمایش موجودی کیف پول -->
-    <TextView
-        android:id="@+id/txt_wallet_balance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 تومان"
-        android:padding="12dp"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:background="#4CAF50"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/title_text"
-        android:layout_marginTop="30dp" />
+        <!-- عنوان برنامه -->
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="کیف پول شایان"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
 
-    <!-- باکس نمایش موجودی صندوق -->
-    <TextView
-        android:id="@+id/txt_investment_balance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 تومان"
-        android:padding="12dp"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:background="#2196F3"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/txt_wallet_balance"
-        android:layout_marginTop="16dp" />
+        <!-- موجودی کیف پول -->
+        <TextView
+            android:id="@+id/txt_wallet_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="موجودی کیف پول: ۰ تومان"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp" />
 
-    <!-- دکمه عملیات -->
-    <Button
-        android:id="@+id/operation_button"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:text="عملیات"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/txt_investment_balance"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="#9C27B0"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:padding="12dp"
-        android:elevation="10dp"
-        android:visibility="visible" />
+        <!-- موجودی صندوق -->
+        <TextView
+            android:id="@+id/txt_investment_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="موجودی صندوق: ۰ تومان"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginBottom="32dp" />
 
-</RelativeLayout>
+        <!-- دکمه عملیات -->
+        <Button
+            android:id="@+id/operation_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="عملیات"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#9C27B0"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:elevation="8dp" />
+
+    </LinearLayout>
+
+</FrameLayout>
