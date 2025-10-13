@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- تم اصلی برنامه -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- حذف بک‌گراند پیش‌فرض سیستم تا بک‌گراند شما دیده شود -->
+        <item name="android:windowBackground">@null</item>
+
+        <!-- رنگ‌های اصلی برنامه -->
+        <item name="colorPrimary">#9C27B0</item>
+        <item name="colorPrimaryDark">#7B1FA2</item>
+        <item name="colorAccent">#E040FB</item>
+
+        <!-- بدون اکشن‌بار -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- فونت پیش‌فرض -->
+        <item name="android:fontFamily">@android:font/sans-serif</item>
+
+        <!-- رنگ متن پیش‌فرض -->
+        <item name="android:textColor">#FFFFFF</item>
+
+        <!-- بک‌گراند کل صفحه تیره ساده (در صورت نداشتن عکس) -->
+        <item name="android:colorBackground">#121212</item>
+    </style>
+
+</resources>
